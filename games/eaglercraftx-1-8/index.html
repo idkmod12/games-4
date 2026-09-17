@@ -628,7 +628,9 @@
       (function () {
         function eaglerBundleUnwrap(tagIn) {
           var e = document.getElementById(tagIn);
-          var ret = e.innerText;
+          // The bundle is stored in an indented style block. Trim the wrapper
+          // whitespace so the data URI prefix and base64 payload stay aligned.
+          var ret = e.innerText.trim();
           document.head.removeChild(e);
           return ret;
         }
